@@ -73,7 +73,7 @@ clear_zombie
 free_ram
 echo -e "${LN}┃${NC} [**] All cleanup done.."
 echo -e "${LN}┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛${NC}"
-echo -e "${LN}●━━━━━━━━━━━━━━━━━━━━🜲PPS_TECH━━━━━━━━━━━━━━━━━━━━●${NC}"
+echo -e "${LN}●━━━━━━━━━━━━━━━━━━━━🜲IMRAN_TECH━━━━━━━━━━━━━━━━━━━━●${NC}"
 echo ""
 read -n 1 -s -r -p " Press any key to return to IPv6 Menu..."
 menu
