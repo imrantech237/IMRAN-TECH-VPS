@@ -25,7 +25,7 @@ if not config: exit(1)
 
 bot         = telebot.TeleBot(config.get('bot_token'))
 SUPER_ADMIN = int(config.get('super_admin'))
-BRAND       = config.get('brand', '🜲 PPS')
+BRAND       = config.get('brand', '🜲 IMRAN')
 
 # ══════════════════════════════════════════
 #  VALIDATION
