@@ -10,11 +10,11 @@ from datetime import datetime, timedelta
 from modules import system_core, ssh_core, admin_core, xray_core, zivpn_core
 
 logging.basicConfig(level=logging.WARNING, format='%(asctime)s %(levelname)s %(message)s')
-CONFIG_FILE    = '/etc/pps_bot/config.json'
-RESELLERS_FILE = '/etc/pps_bot/resellers.json'
-CONVS_FILE     = '/etc/pps_bot/convs.json'
-VISITORS_FILE  = '/etc/pps_bot/visitors.json'
-MENU_IMAGE_URL = "https://github.com/ppstech237/pps-tg-bot/blob/main/pps.jpg?raw=true"
+CONFIG_FILE    = '/etc/imran_bot/config.json'
+RESELLERS_FILE = '/etc/imran_bot/resellers.json'
+CONVS_FILE     = '/etc/imran_bot/convs.json'
+VISITORS_FILE  = '/etc/imran_bot/visitors.json'
+MENU_IMAGE_URL = "https://github.com/imrantech237/IMRAN_BOT_TG/blob/main/imran.jpg?raw=true"
 
 def load_config():
     if not os.path.exists(CONFIG_FILE): return None
@@ -148,7 +148,7 @@ def register_visitor(user):
         try:
             bot.send_message(
                 SUPER_ADMIN,
-                f"🆕 *Nouvel utilisateur a lancé le bot 🜲 PPS_TECH TUNNEL 🜲 *\n\n"
+                f"🆕 *Nouvel utilisateur a lancé le bot 🜲 IMRAN_TECH TUNNEL 🜲 *\n\n"
                 f"👤 Nom : {user.first_name or 'N/A'}\n"
                 f"🔗 Username : @{user.username or 'N/A'}\n"
                 f"🆔 ID : `{user.id}`",
@@ -216,7 +216,7 @@ def _expiration_loop():
                         markup.add(InlineKeyboardButton(f"📩 Contacter {BRAND}", callback_data="contact_pps"))
                         bot.send_message(
                             uid_int,
-                            f"⛔ *Abonnement expiré à 🜲 PPS_TECH TUNNEL 🜲*\n\n"
+                            f"⛔ *Abonnement expiré à 🜲 IMRAN_TECH TUNNEL 🜲*\n\n"
                             f"Votre abonnement est arrivé à son terme.\n"
                             f"Contactez {BRAND} pour le renouveler.",
                             parse_mode="Markdown",
@@ -261,7 +261,7 @@ def notify_owner_account_created(creator_id, proto, username, days, password="")
         r     = get_reseller(creator_id)
         alias = r.get("alias", str(creator_id)) if r else "OWNER"
         msg   = (
-            f"🔔 <b>Nouveau compte créé sur 🜲 PPS_TECH TUNNEL 🜲</b>\n\n"
+            f"🔔 <b>Nouveau compte créé sur 🜲 IMRAN_TECH TUNNEL 🜲</b>\n\n"
             f"👤 Revendeur : <b>{alias}</b> (<code>{creator_id}</code>)\n"
             f"🔌 Protocole : <b>{proto.upper()}</b>\n"
             f"🧑 Username  : <code>{username}</code>\n"
@@ -309,7 +309,7 @@ def main_menu_keyboard(uid):
     if uid == SUPER_ADMIN:
         markup.add(InlineKeyboardButton("🏷️ Définir ma marque", callback_data="set_brand_menu"))
     else:
-        markup.add(InlineKeyboardButton(f"📩 Contacter {BRAND}", callback_data="contact_pps"))
+        markup.add(InlineKeyboardButton(f"📩 Contacter {BRAND}", callback_data="contact_imran"))
     return markup
 
 def protocol_menu_keyboard(proto, uid):
@@ -349,10 +349,10 @@ def send_welcome(message):
     register_visitor(message.from_user)
     if not has_access(uid):
         markup = InlineKeyboardMarkup()
-        markup.add(InlineKeyboardButton(f"📩 Contacter {BRAND}", callback_data="contact_pps_unauth"))
+        markup.add(InlineKeyboardButton(f"📩 Contacter {BRAND}", callback_data="contact_imran_unauth"))
         bot.send_message(
             uid,
-            f"⛔ <b>Accès refusé à 🜲 PPS_TECH TUNNEL 🜲</b>\n\n"
+            f"⛔ <b>Accès refusé à 🜲 IMRAN_TECH TUNNEL 🜲</b>\n\n"
             f"Vous n'êtes pas autorisé à utiliser ce bot.\n"
             f"Contactez <b>{BRAND}</b> pour obtenir un accès.",
             parse_mode="HTML",
@@ -366,7 +366,7 @@ def send_welcome(message):
     bot.send_photo(
         uid,
         MENU_IMAGE_URL,
-        caption=f"<b> 🜲 PPS_TECH TUNNEL 🜲</b>{extra}\nSélectionnez un Protocole :",
+        caption=f"<b> 🜲 IMRAN_TECH TUNNEL 🜲</b>{extra}\nSélectionnez un Protocole :",
         parse_mode="HTML",
         reply_markup=main_menu_keyboard(uid)
     )
@@ -387,7 +387,7 @@ def home_callback(call):
     bot.send_photo(
         call.message.chat.id,
         MENU_IMAGE_URL,
-        caption=f"<b> 🜲 PPS_TECH TUNNEL 🜲</b>{extra}\nSélectionnez un module :",
+        caption=f"<b> 🜲 IMRAN_TECH TUNNEL 🜲</b>{extra}\nSélectionnez un module :",
         parse_mode="HTML",
         reply_markup=main_menu_keyboard(uid)
     )
@@ -426,14 +426,14 @@ def protocol_submenu(call):
                   protocol_menu_keyboard(proto, uid))
 
 # ══════════════════════════════════════════
-#  CONTACT PPS
+#  CONTACT IMRAN
 # ══════════════════════════════════════════
 user_sessions = {}
 
-@bot.callback_query_handler(func=lambda call: call.data in ("contact_pps", "contact_pps_unauth"))
+@bot.callback_query_handler(func=lambda call: call.data in ("contact_imran", "contact_imran_unauth"))
 def contact_pps_callback(call):
     uid = call.from_user.id
-    user_sessions[uid] = {"state": "contact_pps"}
+    user_sessions[uid] = {"state": "contact_imran"}
     markup = InlineKeyboardMarkup()
     markup.add(InlineKeyboardButton("❌ Annuler", callback_data="cancel_to_home"))
     try:
@@ -449,7 +449,7 @@ def contact_pps_callback(call):
             f"📩 <b>Contacter {BRAND}</b>\n\nÉcrivez votre message en une seule fois :",
             parse_mode="HTML", reply_markup=markup)
 
-@bot.message_handler(func=lambda m: user_sessions.get(m.from_user.id, {}).get("state") == "contact_pps")
+@bot.message_handler(func=lambda m: user_sessions.get(m.from_user.id, {}).get("state") == "contact_imran")
 def handle_contact_message(message):
     uid   = message.from_user.id
     name  = message.from_user.first_name or str(uid)
@@ -500,7 +500,7 @@ def msg_panel(call):
         )])
     kb.append([InlineKeyboardButton("🔙 Retour", callback_data="action_home")])
     _show_submenu(call,
-        f"<b>💬 Messagerie de 🜲 PPS_TECH TUNNEL 🜲</b>\n\nChoisissez un destinataire :",
+        f"<b>💬 Messagerie de 🜲 IMRAN_TECH TUNNEL 🜲</b>\n\nChoisissez un destinataire :",
         InlineKeyboardMarkup(kb))
 
 @bot.callback_query_handler(func=lambda call: call.data.startswith("msg_conv_") and is_admin(call.from_user.id))
@@ -597,7 +597,7 @@ def menu_resellers(call):
     markup = InlineKeyboardMarkup()
     markup.add(InlineKeyboardButton("🔙 Retour", callback_data="action_home"))
     text = (
-        f"<b>👥 Revendeurs de 🜲 PPS_TECH TUNNEL 🜲</b>\n\n{txt}\n\n"
+        f"<b>👥 Revendeurs de 🜲 IMRAN_TECH TUNNEL 🜲</b>\n\n{txt}\n\n"
         f"➕ /addreseller &lt;ID&gt; &lt;Alias&gt; &lt;trial|premium&gt; [jours]\n"
         f"➖ /delreseller &lt;ID&gt;\n"
         f"✏️ /setmaxdays &lt;ID&gt; &lt;jours&gt;\n"
@@ -643,7 +643,7 @@ def cmd_add_reseller(message):
         }
         save_resellers(resellers)
         bot.reply_to(message,
-            f"✅ Revendeur ajouté à 🜲 PPS_TECH TUNNEL 🜲\n\n"
+            f"✅ Revendeur ajouté à 🜲 IMRAN_TECH TUNNEL 🜲\n\n"
             f"• Alias : {alias}\n• ID : {new_id}\n"
             f"• Type : {rtype.upper()}\n• Max jours : {max_days}j")
         try:
@@ -686,7 +686,7 @@ def cmd_del_reseller(message):
         bot.reply_to(message, f"✅ Revendeur {alias} retiré.")
         try:
             bot.send_message(rem_id,
-                f"⛔ <b>Accès retiré à 🜲 PPS_TECH TUNNEL 🜲</b>\n\n"
+                f"⛔ <b>Accès retiré à 🜲 IMRAN_TECH TUNNEL 🜲</b>\n\n"
                 f"Votre accès au bot a été révoqué par {BRAND}.\n"
                 f"Contactez {BRAND} pour plus d'informations.",
                 parse_mode="HTML")
@@ -741,7 +741,7 @@ def cmd_extend_trial(message):
             f"Nouveau total : {new_d}j {new_h%24}h")
         try:
             bot.send_message(int(tid),
-                f"🎉 <b>Abonnement prolongé sur 🜲 PPS_TECH TUNNEL 🜲</b>\n\n"
+                f"🎉 <b>Abonnement prolongé sur 🜲 IMRAN_TECH TUNNEL 🜲</b>\n\n"
                 f"Votre abonnement a été prolongé de {hours} heure(s) par {BRAND}.\n"
                 f"Nouveau temps restant : {fmt_remain(int(tid))}.",
                 parse_mode="HTML")
@@ -783,7 +783,7 @@ def add_ssh_start(call):
     if not has_access(uid): return
     d_rem = days_remaining(uid)
     if d_rem == 0 and not is_admin(uid):
-        _show_submenu(call, f"❌ Abonnement expiré sur  🜲 PPS_TECH TUNNEL 🜲\nContactez {BRAND}.",
+        _show_submenu(call, f"❌ Abonnement expiré sur  🜲 IMRAN_TECH TUNNEL 🜲\nContactez {BRAND}.",
                       InlineKeyboardMarkup([[InlineKeyboardButton("🔙 Retour", callback_data="menu_ssh")]])); return
     bot.edit_message_text("⚙️ Module SSH — Création",
                           chat_id=call.message.chat.id, message_id=call.message.message_id)
@@ -959,7 +959,7 @@ def handle_list_ssh(call):
     if users:
         for u in users:
             markup.add(InlineKeyboardButton(f"👤 {u}", callback_data=f"view_ssh_{u}"))
-        text = f"📋 <b>LISTE DES COMPTES SSH sur 🜲 PPS_TECH TUNNEL 🜲</b>\nSélectionnez un compte :"
+        text = f"📋 <b>LISTE DES COMPTES SSH sur 🜲 IMRAN_TECH TUNNEL 🜲</b>\nSélectionnez un compte :"
     else:
         text = "📋 Aucun compte SSH trouvé."
     markup.add(InlineKeyboardButton("🔙 Retour Accueil", callback_data="action_home"))
@@ -990,7 +990,7 @@ def view_ssh_account(call):
         f"🔌 Port SSH: <code>22</code>\n"
         f"🔌 Port WS: <code>80</code>\n"
         f"━━━━━━━━━━━━━━━━━━━━━━━━\n"
-        f"✅ Développé par 🜲 PPS TECH.✅\n"
+        f"✅ Développé par 🜲 IMRAN TECH.✅\n"
         f" ━━━━━━━━━━━━━━━━━━━━━━━━"
     )
     markup = InlineKeyboardMarkup(row_width=1)
@@ -1017,7 +1017,7 @@ def add_slowdns_start(call):
     if not has_access(uid): return
     d_rem = days_remaining(uid)
     if d_rem == 0 and not is_admin(uid):
-        _show_submenu(call, f"❌ Abonnement expiré sur 🜲 PPS_TECH TUNNEL 🜲.",
+        _show_submenu(call, f"❌ Abonnement expiré sur 🜲 IMRAN_TECH TUNNEL 🜲.",
                       InlineKeyboardMarkup([[InlineKeyboardButton("🔙 Retour", callback_data="menu_slowdns")]]))
         return
     bot.edit_message_text("⚙️ Module SLOW DNS — Création",
@@ -1105,7 +1105,7 @@ def _slowdns_get_days(message, user, password, creator_id):
             f"🔌 Port DNS: <code>53</code>\n"
             f"🔥 PUB Key:\n<code>{slowdns_pub}</code>\n"
             f"━━━━━━━━━━━━━━━━━━━━━━━━\n"
-            f"✅ Développé par 🜲 PPS TECH.✅\n"
+            f"✅ Développé par 🜲 IMRAN TECH.✅\n"
             f" ━━━━━━━━━━━━━━━━━━━━━━━━"
         )
     bot.send_message(message.chat.id, res, parse_mode="HTML", reply_markup=main_menu_keyboard(creator_id))
@@ -1186,7 +1186,7 @@ def list_slowdns(call):
     if users:
         for u in users:
             markup.add(InlineKeyboardButton(f"👤 {u}", callback_data=f"view_slowdns_{u}"))
-        text = f"📋 <b>LISTE DES COMPTES SLOW DNS sur 🜲 PPS_TECH TUNNEL 🜲</b>\nSélectionnez un compte :"
+        text = f"📋 <b>LISTE DES COMPTES SLOW DNS sur 🜲 IMRAN_TECH TUNNEL 🜲</b>\nSélectionnez un compte :"
     else:
         text = "📋 Aucun compte SLOW DNS trouvé."
     markup.add(InlineKeyboardButton("🔙 Retour Accueil", callback_data="action_home"))
@@ -1218,7 +1218,7 @@ def view_slowdns_account(call):
         f"🔌 Port DNS: <code>53</code>\n"
         f"🔥 PUB Key:\n<code>{slowdns_pub}</code>\n"
         f"━━━━━━━━━━━━━━━━━━━━━━━━\n"
-        f"✅ Développé par 🜲 PPS TECH.✅\n"
+        f"✅ Développé par 🜲 IMRAN TECH.✅\n"
         f" ━━━━━━━━━━━━━━━━━━━━━━━━"
     )
     markup = InlineKeyboardMarkup(row_width=1)
@@ -1245,7 +1245,7 @@ def add_udpfast_start(call):
     if not has_access(uid): return
     d_rem = days_remaining(uid)
     if d_rem == 0 and not is_admin(uid):
-        _show_submenu(call, f"❌ Abonnement expiré sur 🜲 PPS_TECH TUNNEL 🜲.",
+        _show_submenu(call, f"❌ Abonnement expiré sur 🜲 IMRAN_TECH TUNNEL 🜲.",
                       InlineKeyboardMarkup([[InlineKeyboardButton("🔙 Retour", callback_data="menu_udpfast")]]))
         return
     bot.edit_message_text("⚙️ Module UDP FAST — Création",
@@ -1331,7 +1331,7 @@ def _udpfast_get_days(message, user, password, creator_id):
             f"🔌 Port UDP: <code>1-65535</code>\n"
             f"🚀 Config: <code>{ip}:1-65535@{user}:{password}</code>\n"
             f"━━━━━━━━━━━━━━━━━━━━━━━━\n"
-            f"✅ Développé par 🜲 PPS TECH.✅\n"
+            f"✅ Développé par 🜲 IMRAN TECH.✅\n"
             f" ━━━━━━━━━━━━━━━━━━━━━━━━"
         )
     bot.send_message(message.chat.id, res, parse_mode="HTML", reply_markup=main_menu_keyboard(creator_id))
@@ -1412,7 +1412,7 @@ def list_udpfast(call):
     if users:
         for u in users:
             markup.add(InlineKeyboardButton(f"👤 {u}", callback_data=f"view_udpfast_{u}"))
-        text = f"📋 <b>LISTE DES COMPTES UDP FAST sur 🜲 PPS_TECH TUNNEL 🜲</b>\nSélectionnez un compte :"
+        text = f"📋 <b>LISTE DES COMPTES UDP FAST sur 🜲 IMRAN_TECH TUNNEL 🜲</b>\nSélectionnez un compte :"
     else:
         text = "📋 Aucun compte UDP FAST trouvé."
     markup.add(InlineKeyboardButton("🔙 Retour Accueil", callback_data="action_home"))
@@ -1442,7 +1442,7 @@ def view_udpfast_account(call):
         f"🔌 Port UDP: <code>1-65535</code>\n"
         f"🚀 Config: <code>{ip}:1-65535@{user}:{password}</code>\n"
         f"━━━━━━━━━━━━━━━━━━━━━━━━\n"
-        f"✅ Développé par 🜲 PPS TECH.✅\n"
+        f"✅ Développé par 🜲 IMRAN TECH.✅\n"
         f" ━━━━━━━━━━━━━━━━━━━━━━━━"
     )
     markup = InlineKeyboardMarkup(row_width=1)
