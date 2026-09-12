@@ -1,0 +1,132 @@
+#!/bin/bash
+# IMRAN_TECH Telegram Bot Panel - Méthode fiable (systemd)
+
+clear
+LN='\e[34m'
+BG='\e[44m'
+NC='\e[0m'
+GR='\e[32m'
+RD='\e[31m'
+
+pps_bot_panel() {
+    echo -e "${LN}┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓${NC}"
+    echo -e "${LN}┃${NC} ${BG}         🜲 IMRAN_TECH TELEGRAM BOT PANEL           ${NC} ${LN}┃${NC}"
+    echo -e "${LN}┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛${NC}"
+    echo -e "${LN}┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓${NC}"
+    echo -e "${LN}┃${NC}"
+    echo -e "${LN}┃${NC} [01] • Install / Configure Telegram Bot"
+    echo -e "${LN}┃${NC} [02] • Stop Telegram Bot"
+    echo -e "${LN}┃${NC} [03] • Bot Status"
+    echo -e "${LN}┃${NC}"
+    echo -e "${LN}┃${NC} [00] • Back to Main Menu"
+    echo -e "${LN}┗━━━━━━━━━━━━━━━━━━━━━━🜲 IMRAN_TECH.━━━━━━━━━━━━━━━━━━━┛${NC}"
+    echo ""
+    read -p " Select option : " tgopt
+    echo ""
+
+    case $tgopt in
+        1 | 01)
+            mkdir -p /etc/pps_bot
+
+            while true; do
+                read -p "Enter your Telegram User ID (numbers only): " TG_USERID
+                if [[ "$TG_USERID" =~ ^[0-9]+$ ]] && [ ${#TG_USERID} -ge 6 ]; then
+                    break
+                else
+                    echo -e "${RD}Invalid User ID! Must be numbers only (min 6 digits).${NC}"
+                fi
+            done
+
+            while true; do
+                read -p "Enter your Bot Token: " TG_TOKEN
+                if [[ "$TG_TOKEN" =~ ^[0-9]+:[A-Za-z0-9_-]{30,}$ ]]; then
+                    break
+                else
+                    echo -e "${RD}Invalid Token format! Example: 123456:ABCDEF...${NC}"
+                fi
+            done
+
+            cat > /etc/pps_bot/config.json << EOF
+{
+    "bot_token": "$TG_TOKEN",
+    "super_admin": $TG_USERID
+}
+EOF
+
+            cat > /etc/systemd/system/ppsbot.service << 'EOF'
+[Unit]
+Description=IMRAN Telegram Bot
+After=network.target
+Wants=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/etc/pps_bot
+ExecStart=/usr/bin/python3 -u /etc/imran_bot/imra'bot.py
+Restart=always
+RestartSec=10
+KillMode=process
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+            if [ ! -f /etc/imran_bot/ppsbot.py ]; then
+                echo -e "${RD}⚠️  imranbot.py not found in /etc/imran_bot/${NC}"
+                echo -e "${RD}Downloading it now...${NC}"
+                wget -q -O /etc/imran_bot/imranbot.py "https://raw.githubusercontent.com/imrantech237/imran/main/menu/imranbot.py"
+                chmod +x /etc/imran_bot/imranbot.py
+                if [ ! -f /etc/imran_bot/imranbot.py ]; then
+                    echo -e "${RD}❌ Failed to download imranbot.py${NC}"
+                    read -p "Press Enter to return... "
+                    clear
+                    pps_bot_panel
+                    return
+                fi
+                echo -e "${GR}✅ imranbot.py downloaded successfully${NC}"
+            fi
+
+            systemctl daemon-reload
+            systemctl enable --now imranbot.service
+
+            echo -e "${GR}✅ Telegram Bot configured and started!${NC}"
+            echo -e "${GR}Check status with: systemctl status ppsbot${NC}"
+            read -p "Press Enter to return... "
+            clear
+            menu
+            ;;
+
+        2 | 02)
+            systemctl stop ppsbot.service 2>/dev/null
+            systemctl disable ppsbot.service 2>/dev/null
+            echo -e "${GR}✅ Telegram Bot stopped and disabled.${NC}"
+            read -p "Press Enter to return... "
+            clear
+            menu
+            ;;
+
+        3 | 03)
+            echo -e "${LN}┏━━━━━━━━━━━━━━━━━━━━━━🜲 IMRAN_TECH.━━━━━━━━━━━━━━━━━━━┓${NC}"
+            systemctl status imranbot.service --no-pager -l
+            echo -e "${LN}┗━━━━━━━━━━━━━━━━━━━━━━🜲 IMRAN_TECH.━━━━━━━━━━━━━━━━━━━┛${NC}"
+            read -p "Press Enter to return... "
+            clear
+            imran_bot_panel
+            ;;
+
+        0 | 00)
+            clear
+            menu
+            ;;
+
+        *)
+            clear
+            imran_bot_panel
+            ;;
+    esac
+}
+
+imran_bot_panel
