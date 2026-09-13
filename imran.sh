@@ -55,7 +55,7 @@ echo -e "${LN}┏━━━━━━━━━━━━━━━━━━━━━
 echo -e "${LN}┃${NC} ${BG} 🜲 IMRAN_TECH TERMS & CONDITIONS PANEL        ${NC} ${LN}┃${NC}"
 echo -e "${LN}┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛${NC}"
 echo -e "${LN}┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓${NC}"
-echo -e "${LN}┃${NC} ${GR}Welcome to PPS_TECH TUNNEL Services!${NC}"
+echo -e "${LN}┃${NC} ${GR}Welcome to IMRAN_TECH TUNNEL Services!${NC}"
 echo -e "${LN}┃${NC}"
 echo -e "${LN}┃${NC} [*] Please read the terms below carefully"
 echo -e "${LN}┃${NC} [*] PPS_TECH TUNNEL is provided as-is, no warranties."
