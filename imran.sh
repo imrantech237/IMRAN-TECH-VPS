@@ -58,7 +58,7 @@ echo -e "${LN}┏━━━━━━━━━━━━━━━━━━━━━
 echo -e "${LN}┃${NC} ${GR}Welcome to IMRAN_TECH TUNNEL Services!${NC}"
 echo -e "${LN}┃${NC}"
 echo -e "${LN}┃${NC} [*] Please read the terms below carefully"
-echo -e "${LN}┃${NC} [*] PPS_TECH TUNNEL is provided as-is, no warranties."
+echo -e "${LN}┃${NC} [*] IMRAN_TECH TUNNEL is provided as-is, no warranties."
 echo -e "${LN}┃${NC} [*] Do not use this service for illegal activities."
 echo -e "${LN}┃${NC} [*] IMRAN_TECH TUNNEL is not liable for data loss or leaks."
 echo -e "${LN}┃${NC} [*] You must follow all applicable laws."
