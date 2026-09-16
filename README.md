@@ -78,7 +78,7 @@ SSH      | Dropbear | 109         | 8880         |
 
 ## PANEL VIEW
 
-<img src="core/ppspanelview.png" alt="Panel View - PPS_TECH Tunnel" width="600" height="750">
+<img src="core/imranpanelview.png" alt="Panel View - IMRAN_TECH TUNNEL" width="600" height="750">
 
 ## Changelog
 
