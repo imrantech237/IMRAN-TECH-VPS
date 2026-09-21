@@ -7,7 +7,7 @@ export PORT_OVPN_TCP=1194
 export PORT_OVPN_UDP=2200
 export PORT_SQUID=3128
 export PORT_OHP=8000
-export SERVER_HOST="https://raw.githubusercontent.com/imrantech237/imran/main"
+export SERVER_HOST="https://raw.githubusercontent.com/imrantech237/IMRAN-TECH-VPS/main"
 export DTC=$(ip -o -4 route show to default | awk '{print $5}')
 install_packages() {
 rm /home/vps/public_html/*.ovpn
