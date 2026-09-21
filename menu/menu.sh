@@ -1,6 +1,6 @@
 #!/bin/bash
 MYIP=$(curl -sS ipv4.icanhazip.com)
-readonly SERVER_HOST="https://raw.githubusercontent.com/imrantech237/imran/main"
+readonly SERVER_HOST="https://raw.githubusercontent.com/imrantech237/IMRAN-TECH-VPS/main"
 clear
 LN='\e[34m'
 BG='\e[44m'
