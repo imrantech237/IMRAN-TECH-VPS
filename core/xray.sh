@@ -1,6 +1,6 @@
 #!/bin/bash
 clear
-export SERVER_HOST="https://raw.githubusercontent.com/imeantech237/imran/main"
+export SERVER_HOST="https://raw.githubusercontent.com/imeantech237/IMRAN-TECH-VPS/main"
 export DEBIAN_FRONTEND=noninteractive
 log() { printf "%b\n" "[INFO] $*"; }
 err() { printf "%b\n" "[ERROR] $*" >&2; exit 1; }
