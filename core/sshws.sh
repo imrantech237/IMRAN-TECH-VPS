@@ -1,7 +1,7 @@
 #!/bin/bash
 clear
 export DEBIAN_FRONTEND=noninteractive
-export SERVER_HOST="https://raw.githubusercontent.com/imrantech237/imran/main"
+export SERVER_HOST="https://raw.githubusercontent.com/imrantech237/IMRAN-TECH-VPS/main"
 setup_variables() {
 MYIP=$(wget -qO- ipv4.icanhazip.com)
 NET=$(ip -o -4 route show to default | awk '{print $5}')
@@ -85,7 +85,7 @@ systemctl restart dropbear
 }
 configure_stunnel() {
 STUNNEL_VERSION="5.77"
-STUNNEL_URL="https://raw.githubusercontent.com/ppstech237/pps/main/core/stunnel-${STUNNEL_VERSION}.tar.gz"
+STUNNEL_URL="https://raw.githubusercontent.com/imrantech237/IMRAN-TECH-VPS/main/core/stunnel-${STUNNEL_VERSION}.tar.gz"
 INSTALL_DIR="/usr/local/bin"
 ETC_DIR="/etc/stunnel5"
 CONF_FILE="$ETC_DIR/stunnel5.conf"
