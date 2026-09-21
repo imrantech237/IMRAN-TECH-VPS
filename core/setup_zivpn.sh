@@ -5,7 +5,7 @@ GREEN='\033[32m'
 BLUE='\033[34m'
 NC='\033[0m'
 LN='\e[34m'
-export SERVER_HOST="https://raw.githubusercontent.com/imrantech237/imran/main"
+export SERVER_HOST="https://raw.githubusercontent.com/imrantech237/IMRAN-TECH-VPS/main"
 update_system() {
 echo -e "${BLUE}Updating server...${NC}"
 sudo apt-get update && sudo apt-get upgrade -y
