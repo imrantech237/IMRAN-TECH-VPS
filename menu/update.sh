@@ -1,6 +1,6 @@
 #!/bin/bash
 clear
-readonly SERVER_HOST="https://raw.githubusercontent.com/imrantech237/update/main"
+readonly SERVER_HOST="https://raw.githubusercontent.com/imrantech237/IMRAN-TECH-VPS/main"
 export LN='\e[34m'
 export BG='\e[44m'
 export NC='\e[0m'
