@@ -1,6 +1,6 @@
 #!/bin/bash
 clear
-export SERVER_HOST="https://raw.githubusercontent.com/imrantech237/imran/main"
+export SERVER_HOST="https://raw.githubusercontent.com/imrantech237/IMRAN-TECH-VPS/main"
 export UDP_DIR="/etc/udp-custom"
 export SERVICE_FILE="/etc/systemd/system/udp-custom.service"
 update_system() {
