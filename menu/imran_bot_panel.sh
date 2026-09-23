@@ -53,7 +53,7 @@ pps_bot_panel() {
 }
 EOF
 
-            cat > /etc/systemd/system/ppsbot.service << 'EOF'
+            cat > /etc/systemd/system/imranbot.service << 'EOF'
 [Unit]
 Description=IMRAN Telegram Bot
 After=network.target
@@ -62,8 +62,8 @@ Wants=network.target
 [Service]
 Type=simple
 User=root
-WorkingDirectory=/etc/pps_bot
-ExecStart=/usr/bin/python3 -u /etc/imran_bot/imra'bot.py
+WorkingDirectory=/etc/imran_bot
+ExecStart=/usr/bin/python3 -u /etc/imran_bot/imranbot.py
 Restart=always
 RestartSec=10
 KillMode=process
