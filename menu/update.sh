@@ -41,8 +41,8 @@ done
 
 # Mise à jour du bot Telegram
 echo -e "${LN}┃${NC} [*] Update Telegram Bot (ppsbot.py), please wait ..."
-if wget -q -O /etc/pps_bot/ppsbot.py "${SERVER_HOST}/menu/ppsbot.py"; then
-    chmod +x /etc/pps_bot/ppsbot.py
+if wget -q -O /etc/imran_bot/ppsbot.py "${SERVER_HOST}/menu/ppsbot.py"; then
+    chmod +x /etc/imran_bot/imranbot.py
     echo -e "${LN}┃${NC}     ✅ Success"
     ((success++))
 else
@@ -54,8 +54,8 @@ fi
 echo -e "${LN}┃${NC} [*] Update bot Python modules, please wait ..."
 mkdir -p /etc/imran_bot/modules
 for module in __init__ system_core ssh_core admin_core xray_core zivpn_core; do
-    if wget -q -O "/etc/pps_bot/modules/${module}.py" "${SERVER_HOST}/module/${module}.py"; then
-        chmod +x "/etc/pps_bot/modules/${module}.py"
+    if wget -q -O "/etc/imran_bot/modules/${module}.py" "${SERVER_HOST}/module/${module}.py"; then
+        chmod +x "/etc/imran_bot/modules/${module}.py"
         echo -e "${LN}┃${NC}     ✅ ${module}.py updated"
         ((success++))
     else
