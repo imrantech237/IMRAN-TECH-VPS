@@ -367,7 +367,7 @@ install_packages
 show_tns
 run_scripts
 install_menu
-install_pps_bot
+install_imran_bot
 install_modules
 install_uninstaller
 setup_profile
@@ -379,7 +379,7 @@ restart_services
 set_version
 /usr/local/sbin/update
 show_port_info
-pps_completed
+imran_completed
 cleanner
 echo "🜲 IMRAN_TECH TUNNEL has been successfully installed ☑️😼."
 echo "Installation finished☑️. Server will auto reboot in 10 seconds."
