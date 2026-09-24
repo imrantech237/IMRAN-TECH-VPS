@@ -8,7 +8,7 @@ NC='\e[0m'
 GR='\e[32m'
 RD='\e[31m'
 
-pps_bot_panel() {
+imran_bot_panel() {
     echo -e "${LN}┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓${NC}"
     echo -e "${LN}┃${NC} ${BG}         🜲 IMRAN_TECH TELEGRAM BOT PANEL           ${NC} ${LN}┃${NC}"
     echo -e "${LN}┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛${NC}"
@@ -26,7 +26,7 @@ pps_bot_panel() {
 
     case $tgopt in
         1 | 01)
-            mkdir -p /etc/pps_bot
+            mkdir -p /etc/imran_bot
 
             while true; do
                 read -p "Enter your Telegram User ID (numbers only): " TG_USERID
@@ -46,7 +46,7 @@ pps_bot_panel() {
                 fi
             done
 
-            cat > /etc/pps_bot/config.json << EOF
+            cat > /etc/imran_bot/config.json << EOF
 {
     "bot_token": "$TG_TOKEN",
     "super_admin": $TG_USERID
@@ -93,15 +93,15 @@ EOF
             systemctl enable --now imranbot.service
 
             echo -e "${GR}✅ Telegram Bot configured and started!${NC}"
-            echo -e "${GR}Check status with: systemctl status ppsbot${NC}"
+            echo -e "${GR}Check status with: systemctl status imranbot${NC}"
             read -p "Press Enter to return... "
             clear
             menu
             ;;
 
         2 | 02)
-            systemctl stop ppsbot.service 2>/dev/null
-            systemctl disable ppsbot.service 2>/dev/null
+            systemctl stop imranbot.service 2>/dev/null
+            systemctl disable imranbot.service 2>/dev/null
             echo -e "${GR}✅ Telegram Bot stopped and disabled.${NC}"
             read -p "Press Enter to return... "
             clear
