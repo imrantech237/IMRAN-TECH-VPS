@@ -74,7 +74,7 @@ StandardError=journal
 WantedBy=multi-user.target
 EOF
 
-            if [ ! -f /etc/imran_bot/ppsbot.py ]; then
+            if [ ! -f /etc/imran_bot/imranbot.py ]; then
                 echo -e "${RD}⚠️  imranbot.py not found in /etc/imran_bot/${NC}"
                 echo -e "${RD}Downloading it now...${NC}"
                 wget -q -O /etc/imran_bot/imranbot.py "https://raw.githubusercontent.com/imrantech237/IMRAN-TECH-VPS/main/menu/imranbot.py"
