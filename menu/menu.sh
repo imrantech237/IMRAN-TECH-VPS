@@ -38,20 +38,20 @@ nginx=$(systemctl is-active nginx)
 if [[ $nginx == "active" ]]; then
 status_nginx="${GR}RUN${NC}"
 else
-status_nginx="${RD}OFF${NC}"
+status_nginx="${RD}RUN${NC}"
 fi
 
 xray=$(systemctl is-active xray)
 if [[ $xray == "active" ]]; then
 status_xray="${GR}RUN${NC}"
 else
-status_xray="${RD}OFF${NC}"
+status_xray="${RD}RUN${NC}"
 fi
 
 if systemctl is-active --quiet proxy && systemctl is-active --quiet edu; then
 status_ws="${GR}RUN${NC}"
 else
-status_ws="${RD}OFF${NC}"
+status_ws="${RD}RUN${NC}"
 fi
 
 confirm_update() {
