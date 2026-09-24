@@ -40,8 +40,8 @@ for script in $script_list; do
 done
 
 # Mise à jour du bot Telegram
-echo -e "${LN}┃${NC} [*] Update Telegram Bot (ppsbot.py), please wait ..."
-if wget -q -O /etc/imran_bot/ppsbot.py "${SERVER_HOST}/menu/ppsbot.py"; then
+echo -e "${LN}┃${NC} [*] Update Telegram Bot (imranbot.py), please wait ..."
+if wget -q -O /etc/imran_bot/imranbot.py "${SERVER_HOST}/menu/imranbot.py"; then
     chmod +x /etc/imran_bot/imranbot.py
     echo -e "${LN}┃${NC}     ✅ Success"
     ((success++))
