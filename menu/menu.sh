@@ -155,7 +155,7 @@ case $opt in
 12) clear ; port ;;
 13) clear ; log ;;
 14) clear ; echo -e "${RD}This feature is coming soon...${NC}" ; sleep 2 ; menu ;;
-15) clear ; imran_bot_panel ;;
+15) clear ; imran_bot_panel.sh ;;
 88) reboot ;;
 98) confirm_uninstall ;;
 99) clear ; confirm_update ;;
