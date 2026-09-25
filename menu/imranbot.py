@@ -1941,7 +1941,7 @@ def handle_revoke_approval(call):
 #  LANCEMENT
 # ══════════════════════════════════════════
 if __name__ == "__main__":
-    os.makedirs("/etc/pps_bot", exist_ok=True)
+    os.makedirs("/etc/imran_bot", exist_ok=True)
     if not os.path.exists(RESELLERS_FILE): save_resellers({})
     if not os.path.exists(CONVS_FILE):    save_convs({})
     if not os.path.exists(VISITORS_FILE): save_visitors({})
