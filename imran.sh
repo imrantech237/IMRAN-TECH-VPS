@@ -222,7 +222,7 @@ done
 }
 
 install_menu() {
-for script in dns zivpn expiry domain iptools menu socks ssh status trojan vless vmess netguard port log pps_bot_panel update; do
+for script in dns zivpn expiry domain iptools menu socks ssh status trojan vless vmess netguard port log imran_bot_panel update; do
 wget -q -O "/usr/local/sbin/${script}" "${SERVER_HOST}/menu/${script}.sh"
 chmod +x "/usr/local/sbin/$script"
 done
